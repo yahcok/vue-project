@@ -1,44 +1,26 @@
 <script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  }
-})
+import {ref} from 'vue'
+const num = ref(123)
+console.log(num.value)
+
+function onInput(e) {
+    num.value = e.target.value
+}
+
 </script>
 
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
-  </div>
+<h1>{{ num }}</h1>
+
+
+<!-- 需求：将input的值和文本值绑定，也就是文本值和input内容同步显示，以下两个input功能一样 -->
+<input type="text" @input="onInput" :value="num">
+<input v-model="num"/>
+
+
+
+
 </template>
 
 <style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
-}
-
-h3 {
-  font-size: 1.2rem;
-}
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
 </style>
